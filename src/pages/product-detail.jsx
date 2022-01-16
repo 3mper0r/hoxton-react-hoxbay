@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 function Prodcut_detail() {
     const params = useParams()
-    // const history = useHistory()
+    const navigate = useNavigate()
     return (
         <main>
             <section className="product-detail main-wrapper">
@@ -20,7 +20,7 @@ function Prodcut_detail() {
                     <p>£{params.price}</p>
                     {/* <!-- Once you click in this button, the user should be redirected to the Basket page --> */}
                     <button
-                    // onClick={() => history.push('/basket')}
+                        onClick={() => navigate.push('/basket')}
                     >Add to basket</button>
                 </div>
             </section>

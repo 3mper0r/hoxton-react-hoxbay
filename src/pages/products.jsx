@@ -5,6 +5,7 @@ import { useEffect } from 'react/cjs/react.development'
 const [products, setProducts] = useState('')
 function Products() {
     const params = useParams()
+
     useEffect(() => {
         fetch('http://localhost:3000/products')
             .then(resp => resp.json())
