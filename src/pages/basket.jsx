@@ -1,17 +1,30 @@
+import { useState } from "react"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react/cjs/react.development"
+
+const [basket, setBasket] = useState('')
+
 function Basket() {
+
+    const params = useParams()
+    useEffect(() => {
+        fetch('http://localhost:3000/basket')
+            .then(resp => resp.json())
+            .then(basket => setBasket(basket))
+    })
     return (
         <main>
-            <section class="basket-container">
+            <section className="basket-container">
                 <h2>Your Basket</h2>
                 <ul>
                     <li>
-                        <article class="basket-container__item">
+                        <article className="basket-container__item">
                             <img
-                                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                                alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
-                                width="90"
+                                src={params.image}
+                                alt={params.title}
+                                width={90}
                             />
-                            <p>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</p>
+                            <p>{params.title}</p>
                             <p>
                                 Qty:
                                 <select>
@@ -22,7 +35,7 @@ function Basket() {
                                 </select >
                             </p>
 
-                            <p>Item total: £109.95</p>
+                            <p>{params.price}</p>
                         </article>
                     </li>
 
@@ -34,3 +47,5 @@ function Basket() {
 
     )
 }
+
+export default Basket

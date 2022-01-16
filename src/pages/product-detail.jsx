@@ -1,24 +1,32 @@
+import { useParams } from 'react-router-dom'
+
+
 function Prodcut_detail() {
+    const params = useParams()
+    // const history = useHistory()
     return (
         <main>
-            <section class="product-detail main-wrapper">
+            <section className="product-detail main-wrapper">
                 <img
-                    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                    alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+                    src={params.image}
+                    alt={params.title}
                 />
-                <div class="product-detail__side" style="border-color: var(--yellow);">
+                <div className="product-detail__side" style={{ borderColor: "yellow" }}>
                     <h3></h3>
-                    <h2>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h2>
+                    <h2>{params.title}</h2>
                     <p>
-                        Your perfect pack for everyday use and walks in the forest. Stash your
-                        laptop (up to 15 inches) in the padded sleeve, your everyday
+                        {params.description}
                     </p>
-                    <p>£109.95</p>
+                    <p>£{params.price}</p>
                     {/* <!-- Once you click in this button, the user should be redirected to the Basket page --> */}
-                    <button>Add to basket</button>
+                    <button
+                    // onClick={() => history.push('/basket')}
+                    >Add to basket</button>
                 </div>
             </section>
         </main>
 
     )
 }
+
+export default Prodcut_detail
