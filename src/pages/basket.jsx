@@ -11,7 +11,7 @@ function Basket() {
         fetch('http://localhost:3000/basket')
             .then(resp => resp.json())
             .then(basket => setBasket(basket))
-    })
+    }, [])
     return (
         <main>
             <section className="basket-container">
