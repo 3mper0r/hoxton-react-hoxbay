@@ -3,11 +3,11 @@ import { Link } from "react-router-dom"
 
 function Categories() {
 
-    const [categories, setCategories] = useState('')
+    const [categories, setCategories] = useState([])
     useEffect(() => {
         fetch('http://localhost:3000/categories')
             .then(resp => resp.json())
-            .then(categories => setCategories(categories)
+            .then(categoriesFromServer => setCategories(categoriesFromServer)
             )
     }, [])
 

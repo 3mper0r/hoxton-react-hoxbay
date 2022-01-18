@@ -1,16 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useEffect } from "react/cjs/react.development"
 
-const [basket, setBasket] = useState('')
 
 function Basket() {
 
+    const [basket, setBasket] = useState('')
     const params = useParams()
     useEffect(() => {
         fetch('http://localhost:3000/basket')
             .then(resp => resp.json())
-            .then(basket => setBasket(basket))
+            .then(basketFromServer => setBasket(basketFromServer))
     }, [])
     return (
         <main>
